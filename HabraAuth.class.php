@@ -20,7 +20,7 @@ class HabraAuth {
 	 *
 	 * @var string
 	 */
-	private $sUrl='http://habrahabr.ru/json/inbox/add/';
+	private $sUrl='http://habrahabr.ru/json/conversations/send_message/';
 	/**
 	 * Дополнительные заголовки для запроса
 	 *
@@ -71,9 +71,9 @@ class HabraAuth {
 	 */
 	private function Mail($sUser, $sLink) {
 		$this->aQuery = array(
-			'recipients' => $sUser,
-			'title' => 'Авторизация через Хабрахабр',
-			'text' => '<a href="' . $sLink .'">Войти</a>',
+			'respondent_login' => $sUser,
+			'text' => 'Авторизация через Хабрахабр<br/><br/>' .
+			          '<a href="' . $sLink .'">Войти</a>',
 		);
 
 		curl_setopt($this->oCurl, CURLOPT_URL, $this->sUrl);
